@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>日本酒ノート</title>
+    <style>
+        body { max-width: 800px; margin: 0 auto; padding: 20px; font-family: sans-serif; }
+        header { border-bottom: 2px solid #333; margin-bottom: 20px; padding-bottom: 10px; }
+        a { text-decoration: none; color: #007bff; }
+        .btn { padding: 5px 10px; background: #eee; border: 1px solid #ccc; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><a href="{% url 'index' %}" style="color: #000;">日本酒ノート</a></h1>
+        <nav>
+            <a href="{% url 'index' %}">一覧</a> | 
+            <a href="{% url 'sake_create' %}">新規登録</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer style="margin-top: 50px; color: #888; font-size: 0.8em;">
+       
+    </footer>
+
+</body>
+</html>

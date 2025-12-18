@@ -15,11 +15,12 @@
 <header>
         <h1><a href="{% url 'index' %}" style="color: #000;">🍶 日本酒ノート</a></h1>
         <nav style="display: flex; gap: 15px; align-items: center;">
-            <a href="{% url 'index' %}">一覧</a>
+            <a href="{% url 'index' %}">投稿一覧</a>
             <a href="{% url 'event_list' %}">イベント</a>
+            <a href="{% url 'sake_ranking' %}">ランキング</a>
             
             {% if user.is_authenticated %}
-                <a href="{% url 'sake_create' %}">新規登録</a>
+                <a href="{% url 'sake_create' %}">新規投稿</a>
                 <span>ユーザー名：{{ user.username }}</span>
                 
                 <form action="{% url 'logout' %}" method="post" style="display:inline;">

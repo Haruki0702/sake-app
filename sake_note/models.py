@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
+
+from bs4 import BeautifulSoup
 
 class Sake(models.Model):
     SCORE_CHOICES=[
@@ -16,7 +17,6 @@ class Sake(models.Model):
     image=models.ImageField("ラベル画像", upload_to="images/", blank=True, null=True)
     memo=models.TextField("メモ", blank=True)
     created_at=models.DateTimeField("作成日時", auto_now_add=True)
-    user=models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="ユーザー")
 
     def __str__(self):
         return self.title

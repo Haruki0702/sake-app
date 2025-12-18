@@ -12,12 +12,24 @@
 </head>
 <body>
 
-    <header>
-        <h1><a href="{% url 'index' %}" style="color: #000;">日本酒ノート</a></h1>
-        <nav>
-            <a href="{% url 'index' %}">一覧</a> | 
-            <a href="{% url 'sake_create' %}">新規登録</a>
-        </nav>
+<header>
+        <h1><a href="{% url 'index' %}" style="color: #000;">🍶 日本酒ノート</a></h1>
+        <nav style="display: flex; gap: 15px; align-items: center;">
+            <a href="{% url 'index' %}">一覧</a>
+            
+            {% if user.is_authenticated %}
+                <a href="{% url 'sake_create' %}">新規登録</a>
+                <span>ユーザー名：{{ user.username }}</span>
+                
+                <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn" style="font-size: 0.8em;">ログアウト</button>
+                </form>
+
+            {% else %}
+                <a href="{% url 'login' %}" class="btn" style="background: #28a745; color: white;">ログイン</a>
+            {% endif %}
+            </nav>
     </header>
 
     <main>

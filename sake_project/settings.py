@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "sake_note.apps.SakeNoteConfig",
+    "sake_event_scraping.apps.SakeEventScrapingConfig",
 ]
 
 MIDDLEWARE = [

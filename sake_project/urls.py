@@ -24,6 +24,7 @@ urlpatterns = [
     path("", include("sake_note.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
     path("events/", include("sake_event_scraping.urls")),
+    path("ranking/", include("sake_ranking.urls")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

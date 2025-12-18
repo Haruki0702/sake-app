@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "sake_note.apps.SakeNoteConfig",
     "sake_event_scraping.apps.SakeEventScrapingConfig",
+    "sake_ranking.apps.SakeRankingConfig",
 ]
 
 MIDDLEWARE = [

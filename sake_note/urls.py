@@ -7,4 +7,5 @@ urlpatterns = [
     path("<int:pk>/update/", views.SakeUpdateView.as_view(), name="update"),
     path("<int:pk>/delete/", views.SakeDeleteView.as_view(), name="delete"),
     path("signup/", views.SignUpView.as_view(), name="signup"),
+    path("profile/<str:username>/", views.ProfileView.as_view(), name="profile"),
 ]

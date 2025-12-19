@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Sake
 from .forms import SakeForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
-
+from django.contrib.auth.models import User
+from .services import calculate_taste_profile
 
 class IndexView(ListView):
     model=Sake
@@ -46,5 +47,18 @@ class SignUpView(CreateView):
     form_class = UserCreationForm
     template_name = "registration/signup.html"
     success_url = reverse_lazy("login")
+
+class ProfileView(ListView):
+    model=Sake
+    template_name="sake_note/profile.html"
+    context_object_name="sake_list"
+    def get_queryset(self):
+        self.target_user=get_object_or_404(User, username=self.kwargs["username"])
+        return Sake.objects.filter(user=self.target_user).order_by("-created_at")
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context["target_user"]=self.target_user
+        context["radar_data"]=calculate_taste_profile(self.object_list)
+        return context
 
 

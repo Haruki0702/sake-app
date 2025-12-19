@@ -21,7 +21,7 @@
             
             {% if user.is_authenticated %}
                 <a href="{% url 'sake_create' %}">新規投稿</a>
-                <span>ユーザー名：{{ user.username }}</span>
+                <a href="{% url 'profile' user.username %}">👤 {{ user.username }}</a>
                 
                 <form action="{% url 'logout' %}" method="post" style="display:inline;">
                     {% csrf_token %}

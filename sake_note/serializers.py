@@ -1,4 +1,4 @@
-from rest_framework import selializers
+from rest_framework import serializers
 from .models import Sake
 
 class SakeSerializer(serializers.ModelSerializer):
